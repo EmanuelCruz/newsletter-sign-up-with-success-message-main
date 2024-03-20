@@ -17,10 +17,10 @@
       Frontend Mentor | Newsletter sign-up form with success message
     </title>
   </head>
-  <body class="">
+  <body class="relative">
     <!-- Sign-up form start -->
-    <!-- Image -->
     <header class="container m-auto">
+      <!-- Image -->
       <figure class="overflow-hidden h-fit">
         <img
           src="./assets/images/illustration-sign-up-mobile.svg"
@@ -62,35 +62,80 @@
         </li>
       </ul>
       <!-- Form Subscribe -->
-      <form action="" class="flex flex-col gap-3">
+      <form action="#" class="flex flex-col gap-3" id="form-subscribe">
         <label for="email" class="form-label font-bold text-xs"
           >Email address</label
         >
         <input
           class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-custom-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
           type="email"
+          name="email"
           placeholder="email@company.com"
         />
         <button
+          type="submit"
           class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold"
         >
           Subscribe to monthly newsletter
         </button>
       </form>
     </main>
-    <!-- Sign-up form end -->
 
     <!-- Success message start -->
-
-    <!-- Thanks for subscribing! A confirmation email has been sent to
-    ash@loremcompany.com. Please open it and click the button inside to confirm
-    your subscription. Dismiss message -->
-
+    <section
+      class="hidden fixed top-0 left-0 right-0 min-h-screen w-full px-6 pt-36 pb-12 bg-custom-white"
+      id="modal-success-message"
+    >
+      <main class="min-h-full flex flex-col">
+        <figure class="pb-8">
+          <img src="./assets/images/icon-success.svg" alt="" class="" />
+        </figure>
+        <h1 class="text-4xl font-bold pb-8">Thanks for subscribing!</h1>
+        <p class="text-md">
+          A confirmation email has been sent to
+          <span class="font-bold">ash@loremcompany.com</span>. Please open it
+          and click the button inside to confirm your subscription.
+        </p>
+        <button
+          class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold w-full mt-auto"
+          id="dismiss-button"
+        >
+          Dismiss message
+        </button>
+      </main>
+    </section>
     <!-- Success message end -->
 
     <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div> -->
+    <script>
+      $form = document.getElementById("form-subscribe");
+      $modal = document.getElementById("modal-success-message");
+      $dismissButton = document.getElementById("dismiss-button");
+
+      $form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if (isValidEmail($form.elements["email"].value)) {
+          setTimeout(() => {
+            $modal.classList.remove("hidden");
+            $modal.classList.add("flex");
+          }, 1000);
+        } else {
+          alert("algo salio mal");
+        }
+      });
+
+      $dismissButton.addEventListener("click", (e) => {
+        $modal.classList.add("hidden");
+        $modal.classList.remove("flex");
+      });
+
+      function isValidEmail(email) {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return regex.test(email);
+      }
+    </script>
   </body>
 </html>
