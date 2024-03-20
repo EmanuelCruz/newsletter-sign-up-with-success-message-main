@@ -17,45 +17,70 @@
       Frontend Mentor | Newsletter sign-up form with success message
     </title>
   </head>
-  <body>
+  <body class="">
     <!-- Sign-up form start -->
     <!-- Image -->
-    <header>
-      <figure>
-        <img src="" alt="" />
+    <header class="container m-auto">
+      <figure class="bg-slate-800 overflow-hidden h-fit w-full">
+        <img src="./assets/images/illustration-sign-up-mobile.svg" alt="" />
       </figure>
     </header>
     <!-- Body -->
-    <main>
+    <main class="flex flex-col gap-6 px-6 py-10">
       <!-- Title -->
-      <h1>Stay updated!</h1>
+      <h1 class="text-4xl font-bold">Stay updated!</h1>
       <!-- Subtitle -->
       <p>Join 60,000+ product managers receiving monthly updates on:</p>
       <!-- Description list -->
-      <ul>
-        <li>Product discovery and building what matters</li>
-        <li>Measuring to ensure updates are a success</li>
-        <li>And much more!</li>
+      <ul class="flex flex-col gap-2">
+        <li class="flex gap-4">
+          <img
+            src="./assets/images/icon-list.svg"
+            alt=""
+            class="inline-block pb-6"
+          />Product discovery and building what matters
+        </li>
+        <li class="flex gap-4">
+          <img
+            src="./assets/images/icon-list.svg"
+            alt=""
+            class="inline-block pb-6"
+          />
+          Measuring to ensure updates are a success
+        </li>
+        <li class="flex gap-4">
+          <img
+            src="./assets/images/icon-list.svg"
+            alt=""
+            class="inline-block pb-6"
+          />
+          And much more!
+        </li>
       </ul>
       <!-- Form Subscribe -->
-      <form action="">
-        <label for="email">Email address</label>
+      <form action="" class="flex flex-col gap-3">
+        <label for="email" class="form-label font-bold text-xs"
+          >Email address</label
+        >
         <input
+          class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-custom-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
           type="email"
-          class=""
-          name="email"
           placeholder="email@company.com"
         />
-        <button class="">Subscribe to monthly newsletter</button>
+        <button
+          class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold"
+        >
+          Subscribe to monthly newsletter
+        </button>
       </form>
     </main>
     <!-- Sign-up form end -->
 
     <!-- Success message start -->
 
-    Thanks for subscribing! A confirmation email has been sent to
+    <!-- Thanks for subscribing! A confirmation email has been sent to
     ash@loremcompany.com. Please open it and click the button inside to confirm
-    your subscription. Dismiss message
+    your subscription. Dismiss message -->
 
     <!-- Success message end -->
 

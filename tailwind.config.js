@@ -6,7 +6,7 @@ export default {
       colors: {
         tomato: "hsl(4, 100%, 67%)",
         "dark-slate-grey": "hsl(234, 29%, 20%)",
-        "charcoal-Grey": "hsl(235, 18%, 26%)",
+        "charcoal-grey": "hsl(235, 18%, 26%)",
         "custom-grey": "hsl(231, 7%, 60%)",
         "custom-white": "hsl(0, 0%, 100%)",
       },
@@ -18,5 +18,5 @@ export default {
       },
     },
   },
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ["prettier-plugin-tailwindcss", "@tailwindcss/forms"],
 };
