@@ -17,107 +17,115 @@
       Frontend Mentor | Newsletter sign-up form with success message
     </title>
   </head>
-  <body class="relative">
-    <!-- Sign-up form start -->
-    <header class="container m-auto">
-      <!-- Image -->
-      <figure class="overflow-hidden h-fit">
-        <img
-          src="./assets/images/illustration-sign-up-mobile.svg"
-          alt=""
-          class="w-full"
-        />
-      </figure>
-    </header>
-    <!-- Body -->
-    <main class="flex flex-col gap-6 px-6 py-10">
-      <!-- Title -->
-      <h1 class="text-4xl font-bold">Stay updated!</h1>
-      <!-- Subtitle -->
-      <p>Join 60,000+ product managers receiving monthly updates on:</p>
-      <!-- Description list -->
-      <ul class="flex flex-col gap-2">
-        <li class="flex gap-4">
-          <img
-            src="./assets/images/icon-list.svg"
-            alt=""
-            class="inline-block pb-6"
-          />Product discovery and building what matters
-        </li>
-        <li class="flex gap-4">
-          <img
-            src="./assets/images/icon-list.svg"
-            alt=""
-            class="inline-block pb-6"
-          />
-          Measuring to ensure updates are a success
-        </li>
-        <li class="flex gap-4">
-          <img
-            src="./assets/images/icon-list.svg"
-            alt=""
-            class="inline-block pb-6"
-          />
-          And much more!
-        </li>
-      </ul>
-      <!-- Form Subscribe -->
-      <form action="#" class="flex flex-col gap-3" id="form-subscribe">
-        <div class="flex justify-between">
-          <label for="email" class="form-label font-bold text-xs"
-            >Email address</label
-          >
-          <span
-            id="validate-error-email"
-            class="hidden ml-auto font-bold text-red-600 text-xs"
-          >
-            Valid email required
-          </span>
-        </div>
-        <input
-          class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-charcoal-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
-          type="email"
-          name="email"
-          placeholder="email@company.com"
-        />
-        <button
-          type="submit"
-          class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold"
-        >
-          Subscribe to monthly newsletter
-        </button>
-      </form>
-    </main>
-
-    <!-- Modal success message start -->
-    <section
-      class="hidden fixed top-0 left-0 right-0 min-h-screen w-full px-6 pt-36 pb-12 bg-custom-white"
-      id="modal-success-message"
+  <body class="h-screen xl:bg-charcoal-grey xl:flex xl:justify-center">
+    <div
+      class="relative container m-auto sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-8/12 xl:bg-custom-white xl:p-6 xl:rounded-3xl xl:flex"
     >
-      <main class="min-h-full flex flex-col">
-        <figure class="pb-8">
-          <img src="./assets/images/icon-success.svg" alt="" class="" />
+      <!-- Sign-up form start -->
+      <header class="xl:order-2 xl:w-5/12">
+        <!-- Image -->
+        <figure class="overflow-hidden xl:h-full xl:rounded-xl">
+          <img
+            srcset="
+              /assets/images/illustration-sign-up-mobile.svg,
+              /assets/images/illustration-sign-up-desktop.svg 1280w
+            "
+            sizes="
+              (max-width: 1279px) 100%,
+              (min-width: 1280px) 1280px
+            "
+            alt=""
+            class="w-full xl:h-full xl:object-cover xl:bg-img-form-login-xl"
+            id="img-form-sign-up"
+          />
         </figure>
-        <h1 class="text-4xl font-bold pb-8">Thanks for subscribing!</h1>
-        <p class="text-md">
-          A confirmation email has been sent to
-          <span class="font-bold">ash@loremcompany.com</span>. Please open it
-          and click the button inside to confirm your subscription.
-        </p>
-        <button
-          class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold w-full mt-auto"
-          id="dismiss-button"
-        >
-          Dismiss message
-        </button>
+      </header>
+      <!-- Body -->
+      <main class="flex flex-col gap-6 px-6 py-10 xl:order-1 xl:w-7/12">
+        <!-- Title -->
+        <h1 class="text-4xl font-bold">Stay updated!</h1>
+        <!-- Subtitle -->
+        <p>Join 60,000+ product managers receiving monthly updates on:</p>
+        <!-- Description list -->
+        <ul class="flex flex-col gap-2">
+          <li class="flex gap-4">
+            <img
+              src="./assets/images/icon-list.svg"
+              alt=""
+              class="inline-block pb-6"
+            />Product discovery and building what matters
+          </li>
+          <li class="flex gap-4">
+            <img
+              src="./assets/images/icon-list.svg"
+              alt=""
+              class="inline-block pb-6"
+            />
+            Measuring to ensure updates are a success
+          </li>
+          <li class="flex gap-4">
+            <img
+              src="./assets/images/icon-list.svg"
+              alt=""
+              class="inline-block pb-6"
+            />
+            And much more!
+          </li>
+        </ul>
+        <!-- Form Subscribe -->
+        <form action="#" class="flex flex-col gap-3" id="form-subscribe">
+          <div class="flex justify-between">
+            <label for="email" class="form-label font-bold text-xs"
+              >Email address</label
+            >
+            <span
+              id="validate-error-email"
+              class="hidden ml-auto font-bold text-red-600 text-xs"
+            >
+              Valid email required
+            </span>
+          </div>
+          <input
+            class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-charcoal-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
+            type="email"
+            name="email"
+            placeholder="email@company.com"
+          />
+          <button
+            type="submit"
+            class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold"
+          >
+            Subscribe to monthly newsletter
+          </button>
+        </form>
       </main>
-    </section>
+
+      <!-- Modal success message start -->
+      <section
+        class="hidden fixed top-0 left-0 right-0 min-h-screen w-full px-6 pt-36 pb-12 bg-custom-white container m-auto sm:w-8/12 md:w-6/12"
+        id="modal-success-message"
+      >
+        <main class="min-h-full flex flex-col">
+          <figure class="pb-8">
+            <img src="./assets/images/icon-success.svg" alt="" class="" />
+          </figure>
+          <h1 class="text-4xl font-bold pb-8">Thanks for subscribing!</h1>
+          <p class="text-md">
+            A confirmation email has been sent to
+            <span class="font-bold">ash@loremcompany.com</span>. Please open it
+            and click the button inside to confirm your subscription.
+          </p>
+          <button
+            class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold w-full mt-auto"
+            id="dismiss-button"
+          >
+            Dismiss message
+          </button>
+        </main>
+      </section>
+    </div>
     <!-- Modal success message end -->
 
-    <!-- <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
     <script>
       $form = document.getElementById("form-subscribe");
       $modal = document.getElementById("modal-success-message");
