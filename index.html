@@ -63,11 +63,19 @@
       </ul>
       <!-- Form Subscribe -->
       <form action="#" class="flex flex-col gap-3" id="form-subscribe">
-        <label for="email" class="form-label font-bold text-xs"
-          >Email address</label
-        >
+        <div class="flex justify-between">
+          <label for="email" class="form-label font-bold text-xs"
+            >Email address</label
+          >
+          <span
+            id="validate-error-email"
+            class="hidden ml-auto font-bold text-red-600 text-xs"
+          >
+            Valid email required
+          </span>
+        </div>
         <input
-          class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-custom-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
+          class="border-custom-grey appearance-none border rounded-lg py-4 px-5 text-charcoal-grey leading-tight focus:outline-none focus:ring-2 focus:ring-custom-grey mb-2"
           type="email"
           name="email"
           placeholder="email@company.com"
@@ -81,7 +89,7 @@
       </form>
     </main>
 
-    <!-- Success message start -->
+    <!-- Modal success message start -->
     <section
       class="hidden fixed top-0 left-0 right-0 min-h-screen w-full px-6 pt-36 pb-12 bg-custom-white"
       id="modal-success-message"
@@ -104,7 +112,7 @@
         </button>
       </main>
     </section>
-    <!-- Success message end -->
+    <!-- Modal success message end -->
 
     <!-- <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
@@ -114,23 +122,66 @@
       $form = document.getElementById("form-subscribe");
       $modal = document.getElementById("modal-success-message");
       $dismissButton = document.getElementById("dismiss-button");
+      $msgErrorInputEmail = document.getElementById("validate-error-email");
+      $inputEmail = $form.elements["email"];
 
       $form.addEventListener("submit", (e) => {
         e.preventDefault();
-        if (isValidEmail($form.elements["email"].value)) {
+        clearMessageError($msgErrorInputEmail);
+        if (isValidEmail($inputEmail.value)) {
           setTimeout(() => {
-            $modal.classList.remove("hidden");
-            $modal.classList.add("flex");
+            $modal.classList.replace("hidden", "flex");
           }, 1000);
         } else {
-          alert("algo salio mal");
+          showMessageError($msgErrorInputEmail, $inputEmail);
+          $inputEmail.addEventListener("keydown", (e) => {
+            // console.log(e.key);
+            if (e.key === "Backspace") {
+              clearStylesInputError($inputEmail);
+            }
+          });
+          window.addEventListener("click", function (e) {
+            if (!$inputEmail.contains(e.target)) {
+              // alert("Clicked outside Box");
+              clearStylesInputError($inputEmail);
+            }
+          });
         }
       });
 
       $dismissButton.addEventListener("click", (e) => {
-        $modal.classList.add("hidden");
-        $modal.classList.remove("flex");
+        $modal.classList.replace("flex", "hidden");
+        $inputEmail.value = "";
       });
+
+      function showMessageError($message, $input) {
+        $message.classList.remove("hidden");
+        showStylesInputError($input);
+      }
+
+      function clearMessageError($message) {
+        $message.classList.add("hidden");
+      }
+
+      function showStylesInputError($input) {
+        $input.classList.replace(
+          "focus:ring-custom-grey",
+          "focus:ring-red-600"
+        );
+        $input.classList.add("focus:bg-red-200");
+        $input.classList.replace("text-charcoal-grey", "text-red-600");
+        $input.focus();
+      }
+
+      function clearStylesInputError($input) {
+        $inputEmail.classList.replace(
+          "focus:ring-red-600",
+          "focus:ring-custom-grey"
+        );
+        $inputEmail.classList.remove("focus:bg-red-200");
+        $inputEmail.classList.replace("text-red-600", "text-charcoal-grey");
+        $inputEmail.focus();
+      }
 
       function isValidEmail(email) {
         const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
