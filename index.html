@@ -93,7 +93,8 @@
           />
           <button
             type="submit"
-            class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold"
+            class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold cursor-not-allowed"
+            disabled
           >
             Subscribe to monthly newsletter
           </button>
@@ -102,27 +103,29 @@
 
       <!-- Modal success message start -->
       <section
-        class="hidden fixed top-0 left-0 right-0 min-h-screen w-full px-6 pt-36 pb-12 bg-custom-white container m-auto sm:w-8/12 md:w-6/12"
+        class="hidden fixed top-0 bottom-0 left-0 right-0 w-full h-screen container m-auto sm:w-8/12 md:w-6/12 lg:w-5/12 xl:w-full xl:justify-center xl:items-center pt-36 xl:pt-0 bg-custom-white xl:bg-transparent xl:backdrop-blur-md"
         id="modal-success-message"
       >
+      <div class="w-full h-full xl:h-fit xl:w-96 px-6 py-12 bg-custom-white xl:rounded-3xl xl:p-12 ">
         <main class="min-h-full flex flex-col">
           <figure class="pb-8">
             <img src="./assets/images/icon-success.svg" alt="" class="" />
           </figure>
-          <h1 class="text-4xl font-bold pb-8">Thanks for subscribing!</h1>
-          <p class="text-md">
+          <h1 class="text-4xl font-bold pb-8 xl:pb-6 xl:text-5xl">Thanks for subscribing!</h1>
+          <p class="text-md xl:text-sm xl:pb-6">
             A confirmation email has been sent to
             <span class="font-bold">ash@loremcompany.com</span>. Please open it
             and click the button inside to confirm your subscription.
           </p>
           <button
-            class="bg-dark-slate-grey rounded-lg py-4 px-5 text-custom-white font-bold w-full mt-auto"
+            class="bg-dark-slate-grey xl:bg-tomato rounded-lg py-4 px-5 text-custom-white font-bold w-full mt-auto xl:mt-6 active-button"
             id="dismiss-button"
           >
             Dismiss message
           </button>
         </main>
       </section>
+      </div>
     </div>
     <!-- Modal success message end -->
 
@@ -157,10 +160,27 @@
         }
       });
 
+      $inputEmail.addEventListener("keyup", (e) => {
+        stateHandlerForSubmitButton($form);
+      })
+
       $dismissButton.addEventListener("click", (e) => {
         $modal.classList.replace("flex", "hidden");
         $inputEmail.value = "";
+        stateHandlerForSubmitButton($form);
       });
+
+      function stateHandlerForSubmitButton($form){
+        $buttonSubmit = $form.querySelector('button[type="submit"]');
+        if ($inputEmail.value.length > 0) {
+          $buttonSubmit.disabled = false
+          $buttonSubmit.classList.add("xl:bg-tomato", "active-button", "cursor-pointer");
+        } else {
+          $buttonSubmit.disabled = true
+          $buttonSubmit.classList.remove("xl:bg-tomato", "active-button", "cursor-pointer");
+          $buttonSubmit.classList.add("cursor-not-allowed");
+        }
+      }
 
       function showMessageError($message, $input) {
         $message.classList.remove("hidden");

@@ -21,3 +21,9 @@
     @apply font-primary text-paragraph;
   }
 }
+
+@layer components {
+  .active-button {
+    @apply xl:bg-tomato xl:shadow-tomato xl:shadow-2xl;
+  }
+}
